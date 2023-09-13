@@ -4,8 +4,8 @@ kind: Pod
 metadata: 
   name: k8s
 spec: 
-  - containers:
-      name: nginx
-      image: nginx
-      ports: 
-        - containerPort: 8080
+  containers:
+  - name: nginx
+    image: nginx
+    ports: 
+    - containerPort: 8080
