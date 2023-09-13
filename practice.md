@@ -51,9 +51,11 @@
    * `kubeadm init --pod-network-cidr "10.244.0.0/16" --cri-socket "unix:///var/run/cri-dockerd.sock"`
 6. On the master node to run kubectl as regular user execute the following
 
-   • `mkdir -p $HOME/.kube`
-   • `sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config`
-   • `sudo chown $(id -u):$(id -g) $HOME/.kube/config`
+    ```
+   mkdir -p $HOME/.kube
+   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   ```
 7. Now as a regular user execute kubectl get nodes
  * `kubectl get nodes`
 
@@ -72,7 +74,9 @@
 10. Now kuberentes needs CNI plugin so that pod-network is enabled. Till this is done the DNS doesnot work, services don't work so nodes are shown as NotReady.
 
 11. We can choose among wide range of CNI plugins, For this lets use flannnel. Execute the following on master node
-  * ` kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml`
+  * ```
+   kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+   ```
 
 12. Now execute kubectl get nodes -w & wait for all the nodes to get to ready state 
    * `kubectl get nodes -w` 
