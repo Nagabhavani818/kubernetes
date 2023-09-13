@@ -1,0 +1,4 @@
+
+kubeadm join 192.168.0.23:6443 --token 57ozw6.s4gqvonjh2m6g9kj \
+        --discovery-token-ca-cert-hash sha256:c129de8c5c342080e1d43987faa66c272aa98c62716798b1da21fb297b81d \  
+        --cri-socket "unix:///var/run/cri-dockerd.sock"
