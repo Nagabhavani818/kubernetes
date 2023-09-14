@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: 	Pod
+metadata:
+  name: empty
+  labels:
+   app: nothing
+spec:
+  containers:
+    - name: empty
+      image: alpine
