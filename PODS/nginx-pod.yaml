@@ -8,7 +8,7 @@ spec:
     - name: webserver
       image: nginx:1.25
       ports: 
-        - containerPort:
+        - containerPort: 80
           protocol: TCP
 
 
