@@ -13,7 +13,7 @@ spec:
       ports: 
         - containerPort: 80
           protocol: TCP
-    - name: logagenr
+    - name: logagent
       image: alpine
       args:
         - sleep
