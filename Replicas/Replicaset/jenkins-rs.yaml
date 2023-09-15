@@ -17,10 +17,10 @@ spec:
       labels: 
         app: jenkins
         releases: v1.1
-  spec:
-    containers:
-      - name: jenkins
-        image: jenkins/jenkins
-        ports:
-          - containerPort: 8080
-            protocol: TCP      
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins
+          ports:
+            - containerPort: 8080
+              protocol: TCP      
