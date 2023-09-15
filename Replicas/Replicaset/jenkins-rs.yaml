@@ -1,5 +1,5 @@
 ---
-ApiVersion: apps/	v1
+ApiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: jenkins-rs
