@@ -266,6 +266,7 @@ spec:
     * Here we have two resources
        * Job
        * Cronjob
+
     * jobs will run the pod certain time when we want.  
     * Cronjob is nothing but sheduling, if we want to run the pod every 5 mints or 1day or ect... just we have to shedule the time.
   * These are all pod specifications, and how its knows the pod specifications match by labels. First its matchs the labels.
