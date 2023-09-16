@@ -229,7 +229,7 @@ spec:
 * writing manifest to empty
 
 * vi patient.yaml
-
+```
 ---
 apiVersion: v1
 kind: 	Pod
@@ -241,7 +241,7 @@ spec:
   containers:
     - name: empty
       image: alpine 
-
+```
 * At first it goes to pending state. Pending state nothing but in k8s is "API server" accepted your request and stored in
 "etcd cluster" 
 * sheduler pickedup your stuf and than its trying to sheduling in your node. Once it shedule bacically it will create container there.
@@ -283,3 +283,102 @@ spec:
 
 ### Activity
  * Create a replica set with 3 replicas of jenkins/jenkins
+```
+---
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: jenkins-rs
+  labels: 
+   purpose: rsdemo
+spec: 
+  minReadySeconds: 2
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jenkins
+      release: v1.1
+  template: 
+    metadata:
+      labels: 
+        app: jenkins
+        release: v1.1
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins
+          ports:
+            - containerPort: 8080
+              protocol: TCP      
+```              
+
+
+* writing manifest for  spec
+```
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-labels
+  labels:
+    app: nginx
+    release: v1.1
+spec:
+  containers:
+    - name: webserver
+      image: nginx:1.25
+      ports: 
+        - containerPort: 80
+          protocol: TC
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-2
+  labels:
+    app: jenkins
+    release: v1.1
+spec:
+  containers:
+    - name: webserver
+      image: nginx:1.25
+      ports: 
+        - containerPort: 80
+          protocol: TC
+```
+
+* Match Expressions: Generally we started writing equality based Selectors. Eventually things will become complicated to many Environments added & our condition gets commplicated, that is why matchexpressions came
+```
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: jenkins-rs
+  labels: 
+   purpose: rsdemo
+spec: 
+  minReadySeconds: 2
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: app
+        operator:  In
+        values: 
+          - jenkins
+          - hudson
+      - key: release
+        operator:  Exists 
+template: 
+    metadata:
+      labels: 
+        app: jenkins
+        release: v1.1
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins
+          ports:
+            - containerPort: 8080
+              protocol: TCP      

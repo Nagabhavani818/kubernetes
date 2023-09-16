@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-labels
+  labels:
+    app: nginx
+    release: v1.1
+spec:
+  containers:
+    - name: webserver
+      image: nginx:1.25
+      ports: 
+        - containerPort: 80
+          protocol: TC
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-labels-2
+  labels:
+    app: jenkins
+    release: v1.1
+spec:
+  containers:
+    - name: webserver
+      image: nginx:1.25
+      ports: 
+        - containerPort: 80
+          protocol: TC
