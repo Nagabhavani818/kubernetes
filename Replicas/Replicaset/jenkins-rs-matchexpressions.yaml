@@ -17,11 +17,11 @@ spec:
           - hudson
       - key: release
         operator:  Exists 
-template: 
+  template: 
     metadata:
       labels: 
         app: jenkins
-        release: v1.1
+        release: v1.1 
     spec:
       containers:
         - name: jenkins
